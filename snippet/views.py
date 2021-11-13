@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 def list_snippet(request):
     snippet = Snippet.objects.all().order_by("title")
-    return render(request, "snippet/list_snippet.html", {"snippet": snippet})
+    return render(request, "snippet/list_snippets.html", {"snippet": snippet})
 
 def add_snippet(request):
     if request.method == 'GET':

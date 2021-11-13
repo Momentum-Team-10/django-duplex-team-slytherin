@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from snippet import views as snippet_views
 
+
 urlpatterns = [
     path("", snippet_views.list_snippet, name="list_snippet"),
     path('admin/', admin.site.urls),
