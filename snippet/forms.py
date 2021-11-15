@@ -9,5 +9,4 @@ class SnippetForm(forms.ModelForm):
             'description',
             'tag',
             'language_field',
-            # 'created_at',
         ]
