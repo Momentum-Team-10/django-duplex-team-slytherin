@@ -19,5 +19,7 @@
         <h3>Tag: {{ snippet.tag }}</h3>
         <h4>Language Field: {{ snippet.language_field }}</h4>
         <h5>Created At: {{ snippet.created_at }}</h5>
+        <a href="books/{{snippet.id}}/delete">Delete</a>
+        <a href="books/{{snippet.id}}/edit">Edit</a>
     {% endfor %}
 {% endblock %}
