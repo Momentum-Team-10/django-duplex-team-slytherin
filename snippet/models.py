@@ -19,5 +19,7 @@ class Snippet(models.Model):
             on_delete=models.CASCADE,
             related_name="decks"
         )  
+    
+    
     def __str__(self):
         return self.title
