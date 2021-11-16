@@ -17,3 +17,14 @@ def add_snippet(request):
             form.save()
             return redirect(to='list_snippet')
     return render(request, "snippet/add_snippet.html", {"form": form})
+
+# this should strip the pk and create a new one. 
+# Don't know where this function should reside.
+#this is NOT functional yet as well as copy_snippet.html
+# def copy_snippet(request): 
+#     if request.method == 'POST': 
+#         snippet = Snippet.objects.get(pk=snippet_id)
+#         snippet.pk = None
+#         snippet.author = request.user
+#         snippet.save()
+    
