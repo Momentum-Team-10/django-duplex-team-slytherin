@@ -6,7 +6,6 @@ from django.shortcuts import render, redirect
 
 
 
-# Create your views here.
 def list_snippet(request):
     snippets = Snippet.objects.all().order_by("title")
     return render(request, "snippet/list_snippets.html", {"snippets": snippets})
@@ -33,17 +32,8 @@ def edit_snippet(request, pk):
         if form.is_valid():
             form.save()
             return redirect(to='list_snippet')
-
     return render(request, "snippet/edit_snippet.html", {"form": form, "snippet": snippet})
     
     
     
-    # else request.method == 'POST':
-    #     snippets.title = request.POST['title']
-    #     snippets.description = request.POST['description']
-    #     snippets.tag = request.POST['tag']
-    #     snippets.language_field = request.POST['language_field']
-    #     snippets.save()
-    #     return redirect(to='list_snippet')
-    # else:
-    #     return render(request, 'snippet/edit_snippet.html', {'snippets': snippets})
+    
