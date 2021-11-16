@@ -22,5 +22,5 @@ urlpatterns = [
     path("", snippet_views.list_snippet, name="list_snippet"),
     path('admin/', admin.site.urls),
     path('snippet/add_snippet/', snippet_views.add_snippet, name='add_snippet'),
-    
+    path('snippet/<int:pk>/edit', snippet_views.edit_snippet, name='edit_snippet'),
 ]

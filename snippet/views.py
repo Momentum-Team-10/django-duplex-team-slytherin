@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+import snippet
 from snippet.models import Snippet
 from .forms import SnippetForm
 from django.shortcuts import render, redirect
+
+
 
 # Create your views here.
 def list_snippet(request):
@@ -19,3 +22,28 @@ def add_snippet(request):
             snippet.save()
             return redirect(to='list_snippet')
     return render(request, "snippet/add_snippet.html", {"form": form})
+
+def edit_snippet(request, pk):
+    snippet = get_object_or_404(Snippet, pk=pk)
+    # breakpoint()
+    if request.method == "GET":
+        form = SnippetForm(instance=snippet)
+    else:
+        form = SnippetForm(data=request.POST, instance=snippet)
+        if form.is_valid():
+            form.save()
+            return redirect(to='list_snippet')
+
+    return render(request, "snippet/edit_snippet.html", {"form": form, "snippet": snippet})
+    
+    
+    
+    # else request.method == 'POST':
+    #     snippets.title = request.POST['title']
+    #     snippets.description = request.POST['description']
+    #     snippets.tag = request.POST['tag']
+    #     snippets.language_field = request.POST['language_field']
+    #     snippets.save()
+    #     return redirect(to='list_snippet')
+    # else:
+    #     return render(request, 'snippet/edit_snippet.html', {'snippets': snippets})
