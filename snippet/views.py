@@ -3,6 +3,7 @@ import snippet
 from snippet.models import Snippet
 from .forms import SnippetForm
 from django.shortcuts import render, redirect
+from django.db.models import Q
 
 
 
@@ -24,7 +25,6 @@ def add_snippet(request):
 
 def edit_snippet(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
-    # breakpoint()
     if request.method == "GET":
         form = SnippetForm(instance=snippet)
     else:
@@ -33,7 +33,12 @@ def edit_snippet(request, pk):
             form.save()
             return redirect(to='list_snippet')
     return render(request, "snippet/edit_snippet.html", {"form": form, "snippet": snippet})
-    
-    
-    
-    
+
+
+def search_snippet(request):
+    query = request.GET.get("q")
+    results = Snippet.objects.filter(
+        Q(title__icontains=query)
+    )
+    print(query)
+    return render(request, "snippet/list_snippets.html", {"snippets": results})
