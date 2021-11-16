@@ -14,10 +14,10 @@
 <div id="snippet-list">
     {% for snippet in snippets %}
     <div class="card">
-        <h1>Title: {{ snippet.title }}</h1>
-        <h2>Description: {{ snippet.description }}</h2>
-        <h3>Tag: {{ snippet.tag }}</h3>
+        <h3>Title: {{ snippet.title }}</h1>
+        <h4>Description: {{ snippet.description }}</h2>
+        <h4>Tag: {{ snippet.tag }}</h3>
         <h4>Language Field: {{ snippet.language_field }}</h4>
-        <h5>Created At: {{ snippet.created_at }}</h5>
+        <h4>Created At: {{ snippet.created_at }}</h5>
     {% endfor %}
 {% endblock %}
