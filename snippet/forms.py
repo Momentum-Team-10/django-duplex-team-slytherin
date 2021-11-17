@@ -10,13 +10,3 @@ class SnippetForm(forms.ModelForm):
             'tag',
             'language_field',
         ]
-
-class RegisterForm(forms.ModelForm):
-    class Meta:
-        model = Snippet
-        fields = [
-            'first_name',
-            'last_name',
-            'email',
-            'employer',
-        ]        
