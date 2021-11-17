@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+<h3>Snippet Detail</h3>
+
+<a href={% url 'list_snippet' %}>Back to all snippets</a>
+<div class="ma5 pa2 f6 lh-copy ba b--light-silver br2 measure-narrow">
+  <p class="snippet_title f3 fw6 db black">{{ snippet.title }}</p>
+  <p class="ml5 f5 gray">{{ snippet.description }}</p>
+  <p class="ml5 f5 gray">{{ snippet.author }}</p>
+  <p class="ml5 f5 gray">{{ snippet.tag }}</p>
+</div>
+
+{% endblock content %}

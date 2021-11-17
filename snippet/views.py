@@ -48,3 +48,13 @@ def search_snippet(request):
     )
     print(query)
     return render(request, "snippet/list_snippets.html", {"snippets": results})
+
+def show_snippet(request, pk):
+    snippet = get_object_or_404(Snippet, pk=pk)
+    print(snippet)
+    return render(
+        request,
+        "snippet/show_snippet.html",
+        {"snippet": snippet },
+
+    )
