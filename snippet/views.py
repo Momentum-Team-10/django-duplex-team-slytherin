@@ -2,6 +2,7 @@ from django.shortcuts import render
 from snippet.models import Snippet
 from .forms import SnippetForm
 from django.shortcuts import render, redirect
+from django.db.models import Q
 
 # Create your views here.
 def list_snippet(request):
@@ -18,13 +19,26 @@ def add_snippet(request):
             return redirect(to='list_snippet')
     return render(request, "snippet/add_snippet.html", {"form": form})
 
+
+
+def search_snippet(request):
+    query = request.GET.get("q")
+    results = Snippet.objects.filter(
+        Q(title__icontains=query)
+    )
+    print(query)
+
+
+    return render(request, "snippet/list_snippets.html", {"snippets": results})
+
 # this should strip the pk and create a new one. 
 # Don't know where this function should reside.
 #this is NOT functional yet as well as copy_snippet.html
-# def copy_snippet(request): 
-#     if request.method == 'POST': 
-#         snippet = Snippet.objects.get(pk=snippet_id)
-#         snippet.pk = None
-#         snippet.author = request.user
-#         snippet.save()
+
+def copy_snippet(request): 
+    if request.method == 'POST': 
+        snippet = Snippet.objects.get(pk=snippet_id)
+        snippet.pk = None
+        snippet.author = request.user
+        snippet.save()
     

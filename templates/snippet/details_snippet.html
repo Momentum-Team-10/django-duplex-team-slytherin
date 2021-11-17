@@ -4,7 +4,14 @@
 
     <h2>Hi{{user.username}}! </h2>
     <h1>Copy the Snippet</h1>
-
+    <div>
+        <form action="{% url 'copy_snippet'%}" method="POST">
+            <div id="add-button">
+                <button type="submit">Copy Snippet</button>
+            </div>
+        </form>
+    
+    </div>
 <div>
     <form action="{% url 'copy_snippet %}" method="GET">
         {% csrf_token %}
