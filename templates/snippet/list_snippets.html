@@ -1,6 +1,10 @@
 {% extends "base.html" %} 
 {% block content %}
-
+<div>
+        <!-- <a class="login" href="{% url 'auth_login' %}">Login</a>
+        <a class="logout" href="{% url 'auth_logout' %}">Logout</a> -->
+        <a class="register" href="{% url 'registration_register' %}">Sign Up</a>        
+</div>
 <div>
     <form action="{% url 'add_snippet'%}" method="POST">
         {% csrf_token %}
