@@ -21,5 +21,5 @@ urlpatterns = [
     path("", snippet_views.list_snippet, name="list_snippet"),
     path('admin/', admin.site.urls),
     path('snippet/add_snippet/', snippet_views.add_snippet, name='add_snippet'),
-    
+    path('user/<int:pk>/profile', views.profile_view.as_view(),name='Profile')
 ]

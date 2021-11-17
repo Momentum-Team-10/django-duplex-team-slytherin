@@ -17,3 +17,4 @@ def add_snippet(request):
             form.save()
             return redirect(to='list_snippet')
     return render(request, "snippet/add_snippet.html", {"form": form})
+                 
