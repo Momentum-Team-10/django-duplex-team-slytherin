@@ -48,3 +48,4 @@ def search_snippet(request):
     )
     print(query)
     return render(request, "snippet/list_snippets.html", {"snippets": results})
+

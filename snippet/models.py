@@ -10,7 +10,6 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-    
 
 class Snippet(models.Model):
     title = models.CharField(max_length=255)
