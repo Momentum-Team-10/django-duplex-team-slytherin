@@ -64,3 +64,4 @@ def copy_snippet(request):
         snippet.save()
     
     return render(request, "snippet/list_snippets.html", {"snippets": results})
+

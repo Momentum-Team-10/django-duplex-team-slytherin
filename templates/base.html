@@ -8,7 +8,10 @@
 </head>
 <body>
     {% block content %}
-    
+    <a class="logout" href="{% url 'auth_logout' %}">Logout</a>
+        
+        <a class="login" href="{% url 'auth_login' %}">Login</a>
+        <a class="register" href="{% url 'registration_register' %}">Sign Up</a>
     {% endblock%}
 </body>
 </html>
