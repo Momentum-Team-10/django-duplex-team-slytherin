@@ -9,7 +9,6 @@
             <button type="submit">Add Snippet</button>
         </div>
     </form>
-
 </div>
 
 <div>
@@ -23,11 +22,11 @@
 <div id="snippet-list">
     {% for snippet in snippets %}
     <div class="card">
-        <h3>Title: {{ snippet.title }}</h1>
-        <h4>Description: {{ snippet.description }}</h2>
-        <h4>Tag: {{ snippet.tag }}</h3>
+        <h3>Title: {{ snippet.title }}</h3>
+        <h4>Description: {{ snippet.description }}</h4>
+        <h4>Tag: {{ snippet.tag }}</h4>
         <h4>Language Field: {{ snippet.language_field }}</h4>
-        <h4>Created At: {{ snippet.created_at }}</h5>
+        <h4>Created At: {{ snippet.created_at }}</h4>
         <a href="{% url 'edit_snippet' pk=snippet.pk %}">Edit</a>
         <a href="{% url 'delete_snippet' pk=snippet.pk %}">Delete</a>
     </div>

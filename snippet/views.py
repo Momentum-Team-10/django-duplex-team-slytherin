@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-import snippet
 from snippet.models import Snippet
 from .forms import SnippetForm
 from django.shortcuts import render, redirect
