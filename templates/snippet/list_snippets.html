@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<div>
+    <form action="{% url 'add_snippet'%}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div id="add-button">
+            <button type="submit">Add Snippet</button>
+        </div>
+    </form>
+
+</div>
+
+<div>
+    <form action="{% url 'search_snippet'%}" method="GET">
+
+        <div>
+            <input type="text" placholder="search by title" name="q"/>
+            <button type="submit">Search</button>
+        </div>  
+</div>
+
+<div id="snippet-list">
+    {% for snippet in snippets %}
+    <div class="card">
+        <h3>Title: {{ snippet.title }}</h1>
+        <h4>Description: {{ snippet.description }}</h2>
+        <h4>Tag: {{ snippet.tag }}</h3>
+        <h4>Language Field: {{ snippet.language_field }}</h4>
+        <h4>Created At: {{ snippet.created_at }}</h5>
+        <a href="{% url 'edit_snippet' pk=snippet.pk %}">Edit</a>
+    </div>
+</div>
+    {% endfor %}
+{% endblock %}
