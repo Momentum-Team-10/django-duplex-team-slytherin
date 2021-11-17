@@ -10,3 +10,4 @@ class SnippetForm(forms.ModelForm):
             'tag',
             'language_field',
         ]
+        
