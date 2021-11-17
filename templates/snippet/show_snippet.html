@@ -14,5 +14,9 @@
   <p class="ml5 f5 gray">{{ snippet.author }}</p>
   <p class="ml5 f5 gray">{{ snippet.tag }}</p>
 </div>
+{% if snippet.author == request.user %}
+<a href={% url 'edit_snippet' snippet.id %}>Edit</a>
+{% endif %}
+
 
 {% endblock content %}

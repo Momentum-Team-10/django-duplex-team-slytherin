@@ -51,7 +51,7 @@ def search_snippet(request):
 
 def show_snippet(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
-    print(snippet)
+    print(request)
     return render(
         request,
         "snippet/show_snippet.html",
