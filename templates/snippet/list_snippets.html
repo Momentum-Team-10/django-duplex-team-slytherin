@@ -28,6 +28,10 @@
         <h4>Created At: {{ snippet.created_at }}</h4>
         <a href="{% url 'edit_snippet' pk=snippet.pk %}">Edit</a>
         <a href="{% url 'delete_snippet' pk=snippet.pk %}">Delete</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'show_snippet' pk=snippet.pk %}">Details</a>
+        {% endif %}
+
     </div>
 </div>
     {% endfor %}
