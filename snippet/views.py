@@ -41,12 +41,15 @@ def delete_snippet(request, pk):
         return redirect(to="list_snippet")
     return render(request, "snippet/delete_snippet.html", {"snippet": snippet})
 
+
 def search_snippet(request):
     query = request.GET.get("q")
     results = Snippet.objects.filter(
         Q(title__icontains=query)
     )
     print(query)
+
+
     return render(request, "snippet/list_snippets.html", {"snippets": results})
 
 def show_snippet(request, pk):
