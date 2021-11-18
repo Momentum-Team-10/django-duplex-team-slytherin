@@ -10,7 +10,7 @@
     <form action="{% url 'add_snippet'%}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <div id="add-button">
+        <div class="submit_button">
             <button type="submit">Add Snippet</button>
         </div>
     </form>
@@ -32,9 +32,9 @@
         <h4>Tag: {{ snippet.tag }}</h4>
         <h4>Language Field: {{ snippet.language_field }}</h4>
         <h4>Created At: {{ snippet.created_at }}</h4>
-        <a href="{% url 'edit_snippet' pk=snippet.pk %}">Edit</a>
-        <a href="{% url 'delete_snippet' pk=snippet.pk %}">Delete</a>
-        {% if user.is_authenticated %}
+        {% if snippet.author == request.user %}
+        <a class="button is-warning" href="{% url 'edit_snippet' pk=snippet.pk %}">Edit</a>
+        <a class="button is-danger" href="{% url 'delete_snippet' pk=snippet.pk %}">Delete</a>
         <a href="{% url 'show_snippet' pk=snippet.pk %}">Details</a>
         {% endif %}
 

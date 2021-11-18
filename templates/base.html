@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./styles.css">
     <title>Document</title>
 </head>
+<div class="container">
+    <Header class="bulma-center-mixin">The Ultimate Code Snippet Storage</Header>
+</div>
 <body>
     {% block content %}
-    <a class="logout" href="{% url 'auth_logout' %}">Logout</a>
-        
-        <a class="login" href="{% url 'auth_login' %}">Login</a>
-        <a class="register" href="{% url 'registration_register' %}">Sign Up</a>
+    
     {% endblock%}
 </body>
 </html>

@@ -87,7 +87,7 @@ def show_snippet(request, pk):
         request,
         "snippet/show_snippet.html",
         {"snippet": snippet },
-)
+
 
 
 def copy_snippet(request, pk):
@@ -99,3 +99,4 @@ def copy_snippet(request, pk):
         snippet.save()
         return redirect(to="list_snippets")
     return render(request, "snippet/copy_snippet.html", {"snippet": snippet})
+
