@@ -1,8 +1,6 @@
 {% extends "base.html" %} 
 {% block content %}
 <div>
-
-
     <form action="{% url 'add_snippet'%}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
