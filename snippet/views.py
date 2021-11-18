@@ -4,12 +4,14 @@ from .forms import SnippetForm
 from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def list_snippet(request):
     snippets = Snippet.objects.all().order_by("title")
     return render(request, "snippet/list_snippets.html", {"snippets": snippets})
 
+@login_required
 def add_snippet(request):
     if request.method == 'GET':
         form = SnippetForm()
@@ -22,6 +24,8 @@ def add_snippet(request):
             return redirect(to='list_snippet')
     return render(request, "snippet/add_snippet.html", {"form": form})
 
+
+@login_required
 def edit_snippet(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     if request.method == "GET":
@@ -33,6 +37,8 @@ def edit_snippet(request, pk):
             return redirect(to='list_snippet')
     return render(request, "snippet/edit_snippet.html", {"form": form, "snippet": snippet})
 
+
+@login_required
 def delete_snippet(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     if request.method == "POST":
@@ -52,16 +58,12 @@ def search_snippet(request):
 
     return render(request, "snippet/list_snippets.html", {"snippets": results})
 
-# this should strip the pk and create a new one. 
-# Don't know where this function should reside.
-#this is NOT functional yet as well as copy_snippet.html
+def show_snippet(request, pk):
+    snippet = get_object_or_404(Snippet, pk=pk)
+    print(request)
+    return render(
+        request,
+        "snippet/show_snippet.html",
+        {"snippet": snippet },
 
-def copy_snippet(request): 
-    if request.method == 'POST': 
-        snippet = Snippet.objects.get(pk=snippet_id)
-        snippet.pk = None
-        snippet.author = request.user
-        snippet.save()
-    
-    return render(request, "snippet/list_snippets.html", {"snippets": results})
-
+    )
