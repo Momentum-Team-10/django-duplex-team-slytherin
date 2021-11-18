@@ -59,5 +59,7 @@ def show_snippet(request, pk):
         request,
         "snippet/show_snippet.html",
         {"snippet": snippet },
-
     )
+
+def copy_snippet(request, pk):
+    pass
