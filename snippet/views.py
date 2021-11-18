@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from snippet.models import Snippet
+from snippet.models import Snippet, User
 from .forms import SnippetForm
 from django.shortcuts import render, redirect
 from django.db.models import Q
@@ -65,5 +65,15 @@ def show_snippet(request, pk):
         request,
         "snippet/show_snippet.html",
         {"snippet": snippet },
+)
 
-    )
+
+def copy_snippet(request, pk):
+    snippet = get_object_or_404(Snippet, pk=pk)
+    if request.method == "POST":
+        snippet = Snippet.objects.get(pk=pk)
+        snippet.pk = None
+        snippet.author = request.user
+        snippet.save()
+        return redirect(to="list_snippet")
+    return render(request, "snippet/delete_snippet.html", {"snippet": snippet})
