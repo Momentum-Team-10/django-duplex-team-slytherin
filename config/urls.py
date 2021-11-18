@@ -26,5 +26,4 @@ urlpatterns = [
     path('snippet/<int:pk>/delete', snippet_views.delete_snippet, name='delete_snippet'),
     path('search', snippet_views.search_snippet, name='search_snippet'),
     path("snippets/<int:pk>", snippet_views.show_snippet, name="show_snippet"),    
-    path('copy/<int:pk>/copy', snippet_views.copy_snippet, name='copy_snippet'),  
 ]
