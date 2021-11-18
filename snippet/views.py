@@ -52,16 +52,12 @@ def search_snippet(request):
 
     return render(request, "snippet/list_snippets.html", {"snippets": results})
 
-# this should strip the pk and create a new one. 
-# Don't know where this function should reside.
-#this is NOT functional yet as well as copy_snippet.html
+def show_snippet(request, pk):
+    snippet = get_object_or_404(Snippet, pk=pk)
+    print(request)
+    return render(
+        request,
+        "snippet/show_snippet.html",
+        {"snippet": snippet },
 
-def copy_snippet(request): 
-    if request.method == 'POST': 
-        snippet = Snippet.objects.get(pk=snippet_id)
-        snippet.pk = None
-        snippet.author = request.user
-        snippet.save()
-    
-    return render(request, "snippet/list_snippets.html", {"snippets": results})
-
+    )
