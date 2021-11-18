@@ -1,12 +1,6 @@
 {% extends "base.html" %} 
 {% block content %}
 <div>
-        <a class="login" href="{% url 'auth_login' %}">Login</a>
-        <a class="logout" href="{% url 'auth_logout' %}">Logout</a>
-        <a class="register" href="{% url 'registration_register' %}">Sign Up</a>        
-</div>
-<div>
-
     <form action="{% url 'add_snippet'%}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
@@ -34,10 +28,6 @@
         <h4>Created At: {{ snippet.created_at }}</h4>
         <a href="{% url 'edit_snippet' pk=snippet.pk %}">Edit</a>
         <a href="{% url 'delete_snippet' pk=snippet.pk %}">Delete</a>
-        {% if user.is_authenticated %}
-        <a href="{% url 'show_snippet' pk=snippet.pk %}">Details</a>
-        {% endif %}
-
     </div>
 </div>
     {% endfor %}
