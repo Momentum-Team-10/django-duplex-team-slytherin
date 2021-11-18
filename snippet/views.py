@@ -75,5 +75,5 @@ def copy_snippet(request, pk):
         snippet.pk = None
         snippet.author = request.user
         snippet.save()
-        return redirect(to="list_snippet")
-    return render(request, "snippet/delete_snippet.html", {"snippet": snippet})
+        return redirect(to="list_snippets")
+    return render(request, "snippet/copy_snippet.html", {"snippet": snippet})
