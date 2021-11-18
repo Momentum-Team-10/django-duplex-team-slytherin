@@ -23,7 +23,6 @@ class Snippet(models.Model):
             related_name="decks"
         )  
     
-    
     def __str__(self):
         return self.title
 
