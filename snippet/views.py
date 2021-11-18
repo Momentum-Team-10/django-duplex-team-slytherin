@@ -87,5 +87,15 @@ def show_snippet(request, pk):
         request,
         "snippet/show_snippet.html",
         {"snippet": snippet },
+)
 
-    )
+
+def copy_snippet(request, pk):
+    snippet = get_object_or_404(Snippet, pk=pk)
+    if request.method == "POST":
+        snippet = Snippet.objects.get(pk=pk)
+        snippet.pk = None
+        snippet.author = request.user
+        snippet.save()
+        return redirect(to="list_snippets")
+    return render(request, "snippet/copy_snippet.html", {"snippet": snippet})
