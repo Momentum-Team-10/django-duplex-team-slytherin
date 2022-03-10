@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+{% block content %}
+
+
+<div>
+    <form action="{% url 'search_snippet' %}" method="GET">
+        <div>
+            <input type="text" placeholder="search by title" name="q"/>
+            <button type="submit">Search</button>
+        </div>
+    </form>  
+</div>
+
+<div class="card">
+    {% for snippet in snippets %}
+    <div class="card">
+        <h3>Title: {{ snippet.title }}</h3>
+        <h4>Description: {{ snippet.description }}</h4>
+        <h4>Tag: {{ snippet.tag }}</h4>
+        <h4>Language Field: {{ snippet.language_field }}</h4>
+        <h4>Created At: {{ snippet.created_at }}</h4>
+        {% if snippet.author == request.user %}
+        <a class="button is-warning" href="{% url 'edit_snippet' pk=snippet.pk %}">Edit</a>
+        <a class="button is-danger" href="{% url 'delete_snippet' pk=snippet.pk %}">Delete</a>
+        <a class="button is-primary" href="{% url 'show_snippet' pk=snippet.pk %}">Details</a>
+        {% endif %}
+    </div>
+</div>
+    {% endfor %}
+
+
+{% endblock %}

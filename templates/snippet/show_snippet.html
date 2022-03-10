@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+<h3>Snippet Detail</h3>
+
+<a href={% url 'list_snippet' %}>Back to all snippets</a>
+<div class="ma5 pa2 f6 lh-copy ba b--light-silver br2 measure-narrow">
+  <p class="snippet_title f3 fw6 db black">{{ snippet.title }}</p>
+  <p class="ml5 f5 gray">{{ snippet.description }}</p>
+  <p class="ml5 f5 gray">{{ snippet.author }}</p>
+  <p class="ml5 f5 gray">{{ snippet.tag }}</p>
+</div>
+{% if snippet.author == request.user %}
+<a href={% url 'edit_snippet' snippet.id %}>Edit</a>
+<a href={% url 'copy_snippet' pk=snippet.pk %}>Copy</a>
+{% endif %}
+
+<div>
+  <form action="{% url 'copy_snippet' pk=snippet.pk %}" method="POST">
+      {% csrf_token %}
+      <div>
+          <button type="submit">Copy Snippet</button><br />
+          <a href="{% url 'list_snippet' %}">Cancel</a>
+      </div>
+  </form>
+</div>
+{% endblock content %}
